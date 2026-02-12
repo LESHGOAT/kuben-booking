@@ -1,54 +1,193 @@
-  Prosjektbeskrivelse 2026 uke 5-7
-Deltakere: Omar Dakhil 2IMI
+KUBEN_BOOKING
+IT-utviklingsprosjekt – 2IMI
 
-Prosjektnavn: KUBEN_BOOKING
+Navn: Omar Dakhil
+Periode: Uke 5–7
+Skole: Kuben VGS
 
-planen er å lage en app som både kuben lærere OG elever kan bruke. vi elever har ofte et problem med at vi ikke hvet hva som skjer på skolen, jeg tenkte å lage en app som lar elever se hvilke rom som er booka for hva og lar lærere booke de rommene.
+Prosjektidé
 
-jeg mener at det er et problem med dagens booking problem, elever får ikke se noe som helst og planlegge noe fordi vi hvet ikke hva som funker når. men om vi hadde vist når ting er booket så hjelper jo det for eksempel med om vi ønsker å planlegge en pizza fest kl 9 på torsdag om 3 uker. da kan vi se om gymsalen er ledig da
+Jeg ønsker å utvikle et rombookingsystem for Kuben VGS.
 
-målgruppen er lærere og elever på kuben vgs og om andre skoler er intereserte så lærere og elever da
+I dag har elever lite oversikt over hvilke rom som er booket og når de er ledige. Dette gjør det vanskelig å planlegge aktiviteter som gruppearbeid, møter eller arrangementer. Lærere trenger også en enkel og oversiktlig måte å booke rom på.
 
-FUNKSJONER:
+Målet med prosjektet er å lage en webapplikasjon der:
 
-bruker kan registrere og logge in
-man kan ha forskjellige roller (lærer, elev, ovirsikt)
-elever kan se data lærer kan spørre om data ovirsikt kan endre data
-alt lagres i mariadb
-man kan booke forskjellige rom for forskjellige dager
+Lærere kan booke rom
 
-TEKNOLOGIVALG:
+Elever kan se hvilke rom som er booket
 
-html, css og java
-mariadb
-github
+Systemet lagrer all informasjon i en database
 
-DATA MODELL:
+Mål for prosjektet
 
-BRUKERE
--id
--navn
--brukertype
-|
--elev
--lærer
--admin
-TID
--dager
-|
--intervaller
+Målet er å:
 
+Lage en fungerende webapplikasjon med frontend og backend
 
-ROM
--rom a
--rom b
--rom c
--rom d
+Koble løsningen til en MariaDB-database
 
+Lage et rollebasert system (student og lærer)
 
--booket ja/nei
+Sørge for sikker innlogging
 
+Bruke GitHub og Kanban til å planlegge og strukturere arbeidet
 
+Jeg ønsker at løsningen skal være realistisk og kunne brukes av en skole i praksis.
 
+Målgruppe
 
-kanban skal brukes her for å bare planlegge veldig simpelt på hva jeg skal gjøre, arbeidet skal være fordelt også sånn at jeg kan gjøre alt uten å stresse hele tiden.
+Elever ved Kuben VGS
+
+Lærere ved Kuben VGS
+
+Systemet skal være enkelt å bruke og gi tydelig oversikt over rom og bookinger.
+
+Planlagte funksjoner
+Brukersystem
+
+Registrering av bruker
+
+Innlogging
+
+Ulike roller (student og lærer)
+
+Roller
+
+Student:
+
+Kan se hvilke rom som er booket
+
+Kan ikke booke selv
+
+Lærer:
+
+Kan booke rom
+
+Kan se egne bookinger
+
+Booking
+
+Velge rom
+
+Velge dato
+
+Velge tidspunkt
+
+Lagre booking i database
+
+Hindre dobbeltbooking
+
+Ekstra (hvis tid)
+
+Slette egne bookinger
+
+Admin-rolle
+
+Sikkerhetsforbedringer
+
+Planlagt datamodell
+
+Jeg planlegger å bruke MariaDB med flere tabeller som henger sammen.
+
+users
+
+id
+
+navn
+
+brukertype (student/lærer)
+
+email
+
+password
+
+rooms
+
+id
+
+navn
+
+bookings
+
+id
+
+user_id (koblet til users)
+
+room_id (koblet til rooms)
+
+start_time
+
+end_time
+
+Databasen skal bruke relasjoner (foreign keys) slik at data henger riktig sammen.
+
+⚙️ Teknologivalg
+
+Jeg planlegger å bruke:
+
+Python
+
+Flask (backend)
+
+HTML/CSS (frontend)
+
+JavaScript
+
+MariaDB (database)
+
+GitHub (versjonskontroll)
+
+GitHub Projects (Kanban)
+
+Valget av Flask og MariaDB gjør det mulig å lage en dynamisk løsning med databasekobling.
+
+🗂 Plan for gjennomføring
+
+Prosjektet skal deles opp i mindre oppgaver ved hjelp av Kanban-board i GitHub.
+
+Eksempel på oppgaver:
+
+Lage database
+
+Lage tabeller
+
+Lage innlogging
+
+Lage registrering
+
+Lage visning av rom
+
+Lage booking-funksjon
+
+Teste systemet
+
+Skrive dokumentasjon
+
+Jeg skal flytte oppgaver fra "To do" → "In progress" → "Done" underveis.
+
+Forventede utfordringer
+
+Jeg forventer at følgende kan bli utfordrende:
+
+Koble frontend til backend
+
+Håndtere dato og tid riktig
+
+Lage rollebasert tilgang
+
+Hindre dobbeltbooking
+
+Strukturere databasen riktig
+
+ Videre utvikling (hvis prosjektet utvides)
+
+Admin-panel
+
+Kalender-visning
+
+E-postbekreftelse ved booking
+
+Bedre design og brukeropplevelse
+
+Mer avansert sikkerhet
