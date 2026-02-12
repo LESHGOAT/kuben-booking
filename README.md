@@ -1,12 +1,13 @@
-KUBEN_BOOKING
-IT-utviklingsprosjekt – 2IMI
+Prosjektbeskrivelse – IT-utviklingsprosjekt (2IMI)
 
-Navn: Omar Dakhil
-Periode: Uke 5–7
-Skole: Kuben VGS
+Prosjekttittel: KUBEN_BOOKING
 
-Prosjektidé
+Deltakere:
+Omar Dakhil – Individuelt prosjekt
 
+1. Prosjektidé og problemstilling
+
+Beskrivelse:
 Jeg ønsker å utvikle et rombookingsystem for Kuben VGS.
 
 I dag har elever lite oversikt over hvilke rom som er booket og når de er ledige. Dette gjør det vanskelig å planlegge aktiviteter som gruppearbeid, møter eller arrangementer. Lærere trenger også en enkel og oversiktlig måte å booke rom på.
@@ -19,132 +20,121 @@ Elever kan se hvilke rom som er booket
 
 Systemet lagrer all informasjon i en database
 
-Mål for prosjektet
-
-Målet er å:
-
-Lage en fungerende webapplikasjon med frontend og backend
-
-Koble løsningen til en MariaDB-database
-
-Lage et rollebasert system (student og lærer)
-
-Sørge for sikker innlogging
-
-Bruke GitHub og Kanban til å planlegge og strukturere arbeidet
-
-Jeg ønsker at løsningen skal være realistisk og kunne brukes av en skole i praksis.
-
-Målgruppe
-
+Målgruppe:
 Elever ved Kuben VGS
 
 Lærere ved Kuben VGS
 
 Systemet skal være enkelt å bruke og gi tydelig oversikt over rom og bookinger.
 
-Planlagte funksjoner
-Brukersystem
+2. Funksjonelle krav
+
+Systemet skal minst ha følgende funksjoner:
 
 Registrering av bruker
 
-Innlogging
+Innlogging med sikker passordhåndtering
 
-Ulike roller (student og lærer)
+Ulike roller (student og lærer) med forskjellig tilgang
 
-Roller
+Booking av rom (kun for lærere)
 
-Student:
+Oversikt over hvilke rom som er booket
 
-Kan se hvilke rom som er booket
+Hindre dobbeltbooking av rom
 
-Kan ikke booke selv
+Mulighet for å slette egne bookinger (ekstrafunksjon)
 
-Lærer:
+3. Teknologivalg
 
-Kan booke rom
+Programmeringsspråk: Python, JavaScript
 
-Kan se egne bookinger
+Rammeverk / Plattform: Flask (backend), HTML/CSS/JavaScript (frontend)
 
-Booking
+Database: MariaDB
 
-Velge rom
+Verktøy:
 
-Velge dato
+GitHub for versjonskontroll
 
-Velge tidspunkt
+GitHub Projects (Kanban) for planlegging
 
-Lagre booking i database
+Eventuelle andre verktøy: dotenv for miljøvariabler
 
-Hindre dobbeltbooking
+4. Datamodell
 
-Ekstra (hvis tid)
+Oversikt over tabeller:
 
-Slette egne bookinger
+Tabell 1: users
 
-Admin-rolle
+Beskrivelse: Lagrer alle brukere av systemet, inkludert navn, e-post, passord og rolle (student/lærer)
 
-Sikkerhetsforbedringer
+Kolonner:
 
-Planlagt datamodell
+id (INT, primary key)
 
-Jeg planlegger å bruke MariaDB med flere tabeller som henger sammen.
+navn (VARCHAR)
 
-users
+brukertype (VARCHAR)
 
-id
+email (VARCHAR, unik)
 
-navn
+password (VARCHAR)
 
-brukertype (student/lærer)
+Tabell 2: rooms
 
-email
+Beskrivelse: Lagrer alle tilgjengelige rom
 
-password
+Kolonner:
 
-rooms
+id (INT, primary key)
 
-id
+navn (VARCHAR)
 
-navn
+Tabell 3: bookings
 
-bookings
+Beskrivelse: Lagrer bookinger av rom gjort av brukere
 
-id
+Kolonner:
 
-user_id (koblet til users)
+id (INT, primary key)
 
-room_id (koblet til rooms)
+user_id (INT, foreign key → users.id)
 
-start_time
+room_id (INT, foreign key → rooms.id)
 
-end_time
+start_time (DATETIME)
 
-Databasen skal bruke relasjoner (foreign keys) slik at data henger riktig sammen.
+end_time (DATETIME)
 
-Teknologivalg
+Eksempel på tabellstruktur:
 
-Jeg planlegger å bruke:
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    navn VARCHAR(100) NOT NULL,
+    brukertype VARCHAR(20) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
 
-Python
+CREATE TABLE rooms (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    navn VARCHAR(100) NOT NULL
+);
 
-Flask (backend)
+CREATE TABLE bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    room_id INT NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (room_id) REFERENCES rooms(id) ON DELETE CASCADE
+);
 
-HTML/CSS (frontend)
+5. Plan og arbeidsmetode
 
-JavaScript
-
-MariaDB (database)
-
-GitHub (versjonskontroll)
-
-GitHub Projects (Kanban)
-
-Valget av Flask og MariaDB gjør det mulig å lage en dynamisk løsning med databasekobling.
-
-Plan for gjennomføring
-
-Prosjektet skal deles opp i mindre oppgaver ved hjelp av Kanban-board i GitHub.
+Prosjektet deles opp i mindre oppgaver ved hjelp av Kanban-board i GitHub.
 
 Eksempel på oppgaver:
 
@@ -164,15 +154,13 @@ Teste systemet
 
 Skrive dokumentasjon
 
-Jeg skal flytte oppgaver fra "To do" → "In progress" → "Done" underveis.
+Oppgavene flyttes fra "To do" → "In progress" → "Done" underveis.
 
-Forventede utfordringer
-
-Jeg forventer at følgende kan bli utfordrende:
+Forventede utfordringer:
 
 Koble frontend til backend
 
-Håndtere dato og tid riktig
+Håndtere dato og tid korrekt
 
 Lage rollebasert tilgang
 
@@ -180,7 +168,7 @@ Hindre dobbeltbooking
 
 Strukturere databasen riktig
 
- Videre utvikling (hvis prosjektet utvides)
+Videre utvikling (hvis prosjektet utvides):
 
 Admin-panel
 
